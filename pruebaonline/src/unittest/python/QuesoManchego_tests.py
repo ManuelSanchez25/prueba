@@ -1,23 +1,26 @@
-from ...main.python import QuesoManchego
-from mockito import when, mock, verify, assertEquals, assertFalse, assertTrue
 import unittest
+from QuesoManchego import QuesoManchego 
 
+class QuesoManchego_test(unittest.TestCase):
 
-class QuesoManchegoTest(unittest.TestCase):
-    def __init__(self):
+    def setUp(self):
         self.quesoManchego = QuesoManchego()
 
-    def testCurrentTemperature(self):
-        self.quesoManchego.setCurrentTemperature(26)
-        assertEquals(26, self.quesoManchego.getCurrentTemperature())
-
-    def testFalseMelt(self):
+    
+    def test_CurrentTemperature(self):
+        self.quesoManchego.setCurrentTemperature(21)
+        self.assertEqual(21,self.quesoManchego.getCurrentTemperature())
+    
+    
+    def test_FalseMelt(self):
         self.quesoManchego.melt(False)
-        assertFalse(self.quesoManchego.isMelted())
-
-    def testTrueMelt(self):
+        self.assertFalse(self.quesoManchego.isMelted())
+    
+    
+    def test_TrueMelt(self):
         self.quesoManchego.melt(True)
-        assertTrue(self.quesoManchego.isMelted())
-
-    def testMelting(self):
-        assertEquals(21, self.quesoManchego.getMeltingTemperature())
+        self.assertTrue(self.quesoManchego.isMelted())
+    
+    
+    def test_Melting(self):
+        self.assertEqual(20,self.quesoManchego.getMeltingTemperature())
